@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-    
+
   cupertino_icons: ^1.0.8
   provider: ^6.1.2 #iniezione
   equatable: ^2.0.5 #object equality
@@ -24,6 +24,9 @@ dependencies:
   pinput: ^5.0.0 #inserimento del pin
   copy_with_extension: ^5.0.4 #copy with
   collection: ^1.18.0 #helper per manipolare le collezioni in modo più pratico
+
+  # SUPABASE
+  supabase_flutter: ^2.8.1
 
 dev_dependencies:
   flutter_test:
