@@ -1,4 +1,5 @@
 import 'package:airbnb_checkin/di/dependency_injector.dart';
+import 'package:airbnb_checkin/features/theme/models/theme.dart';
 import 'package:airbnb_checkin/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,8 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: 'Airbnb Check-In',
         debugShowCheckedModeBanner: false,
+        theme: LightTheme.make,
+        themeMode: ThemeMode.light,
         home: const MainPage(),
       ),
     );
