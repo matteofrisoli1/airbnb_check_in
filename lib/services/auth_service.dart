@@ -11,10 +11,19 @@ class AuthService {
       final response = await supabase.auth.signInWithPassword(email: email, password: password);
 
       if (response.user != null) {
+        final userId = response.user!.id;
+
+        final profileResponse = await supabase
+            .from('user_profiles')
+            .select('first_name, last_name, profile_image_url')
+            .eq('id', userId)
+            .single();
+
         final myUser = MyUser(
-          fullName: response.user!.email!,
+          fullName: '${profileResponse['first_name']} ${profileResponse['last_name']}',
           email: response.user!.email!,
           password: password,
+          imageUrl: profileResponse['profile_image_url'],
         );
 
         return myUser;
