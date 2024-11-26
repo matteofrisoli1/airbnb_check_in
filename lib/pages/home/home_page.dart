@@ -4,6 +4,7 @@ import 'package:airbnb_checkin/models/booking/booking.dart';
 import 'package:airbnb_checkin/models/my_user/my_user.dart';
 import 'package:airbnb_checkin/pages/home/dialogs/booking_message_dialog.dart';
 import 'package:airbnb_checkin/pages/home/widgets/perform_check_in_section.dart';
+import 'package:airbnb_checkin/pages/home/widgets/perform_check_out_section.dart';
 import 'package:airbnb_checkin/widget/custom_body.dart';
 import 'package:airbnb_checkin/widget/loading_widget.dart';
 import 'package:airbnb_checkin/widget/user_tile.dart';
@@ -73,7 +74,11 @@ class _HomePageState extends State<HomePage> {
                           CheckingOutBookingState() => const LoadingWidget(
                               padding: EdgeInsets.symmetric(vertical: 64.0),
                             ),
-                          CheckedInBookingState(:final booking) => Placeholder(),
+                          CheckedInBookingState(:final booking) => PerformCheckOutSection(
+                              booking: booking,
+                              onTapCheckout: () => _performCheckOut(context, booking),
+                              onTapSupport: () => _navigateToSupport(context, booking),
+                            ),
                           _ => PerformCheckInSection(
                               pinController: _pinController,
                               onCheckIn: (pinCode) => _performCheckIn(context, pinCode),
@@ -113,6 +118,16 @@ class _HomePageState extends State<HomePage> {
 
   void _performCheckOut(BuildContext context, Booking booking) {
     context.read<BookingBloc>().checkOut(booking);
+  }
+
+  void _navigateToSupport(BuildContext context, Booking booking) {
+    // Navigator.of(context).push(
+    //   MaterialPageRoute(
+    //     builder: (_) => SupportPage(
+    //       booking: booking,
+    //     ),
+    //   ),
+    // );
   }
 
   void _onCheckedIn(BuildContext context) {
