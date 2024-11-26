@@ -7,4 +7,9 @@ final List<RepositoryProvider> _repositories = [
       keychainService: context.read(),
     ),
   ),
+  RepositoryProvider<BookingRepository>(
+    create: (context) => BookingRepository(
+      bookingService: context.read(),
+    ),
+  ),
 ];

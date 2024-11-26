@@ -1,5 +1,6 @@
 import 'package:airbnb_checkin/cubits/auth/auth_cubit.dart';
 import 'package:airbnb_checkin/repositories/auth_repository.dart';
+import 'package:airbnb_checkin/repositories/booking_repository.dart';
 import 'package:airbnb_checkin/services/auth_service.dart';
 import 'package:airbnb_checkin/services/booking_service.dart';
 import 'package:airbnb_checkin/services/keychain_service.dart';
