@@ -1,7 +1,9 @@
 import 'package:airbnb_checkin/blocs/booking/booking_bloc.dart';
 import 'package:airbnb_checkin/cubits/auth/auth_cubit.dart';
+import 'package:airbnb_checkin/models/booking/booking.dart';
 import 'package:airbnb_checkin/models/my_user/my_user.dart';
 import 'package:airbnb_checkin/pages/home/dialogs/booking_message_dialog.dart';
+import 'package:airbnb_checkin/pages/home/widgets/perform_check_in_section.dart';
 import 'package:airbnb_checkin/widget/custom_body.dart';
 import 'package:airbnb_checkin/widget/loading_widget.dart';
 import 'package:airbnb_checkin/widget/user_tile.dart';
@@ -72,7 +74,10 @@ class _HomePageState extends State<HomePage> {
                               padding: EdgeInsets.symmetric(vertical: 64.0),
                             ),
                           CheckedInBookingState(:final booking) => Placeholder(),
-                          _ => Placeholder(),
+                          _ => PerformCheckInSection(
+                              pinController: _pinController,
+                              onCheckIn: (pinCode) => _performCheckIn(context, pinCode),
+                            ),
                         },
                       ),
                       const SizedBox(height: 8),
@@ -101,6 +106,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _performSignOut(BuildContext context) => context.read<AuthCubit>().signOut();
+
+  void _performCheckIn(BuildContext context, String pinCode) {
+    context.read<BookingBloc>().checkIn(pinCode);
+  }
+
+  void _performCheckOut(BuildContext context, Booking booking) {
+    context.read<BookingBloc>().checkOut(booking);
+  }
 
   void _onCheckedIn(BuildContext context) {
     _pinController.clear();
