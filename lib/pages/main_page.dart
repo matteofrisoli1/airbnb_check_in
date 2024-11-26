@@ -1,4 +1,5 @@
 import 'package:airbnb_checkin/cubits/auth/auth_cubit.dart';
+import 'package:airbnb_checkin/pages/home/home_page.dart';
 import 'package:airbnb_checkin/pages/sign_in/sign_in_page.dart';
 import 'package:airbnb_checkin/widget/loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) => switch (state) {
-        AuthenticatedAuthState() => _replacePage(context, Placeholder()),
+        AuthenticatedAuthState() => _replacePage(context, const HomePage()),
         NotAuthenticatedAuthState() => _replacePage(context, const SignInPage()),
         _ => null,
       },
