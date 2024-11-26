@@ -9,4 +9,7 @@ List<SingleChildWidget> _providers = [
       secureStorage: const FlutterSecureStorage(),
     ),
   ),
+  Provider<BookingService>(
+    create: (_) => BookingService(),
+  ),
 ];
