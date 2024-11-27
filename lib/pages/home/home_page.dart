@@ -5,6 +5,7 @@ import 'package:airbnb_checkin/models/my_user/my_user.dart';
 import 'package:airbnb_checkin/pages/home/dialogs/booking_message_dialog.dart';
 import 'package:airbnb_checkin/pages/home/widgets/perform_check_in_section.dart';
 import 'package:airbnb_checkin/pages/home/widgets/perform_check_out_section.dart';
+import 'package:airbnb_checkin/pages/support/support_page.dart';
 import 'package:airbnb_checkin/widget/custom_body.dart';
 import 'package:airbnb_checkin/widget/loading_widget.dart';
 import 'package:airbnb_checkin/widget/user_tile.dart';
@@ -121,13 +122,13 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _navigateToSupport(BuildContext context, Booking booking) {
-    // Navigator.of(context).push(
-    //   MaterialPageRoute(
-    //     builder: (_) => SupportPage(
-    //       booking: booking,
-    //     ),
-    //   ),
-    // );
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => SupportPage(
+          booking: booking,
+        ),
+      ),
+    );
   }
 
   void _onCheckedIn(BuildContext context) {
